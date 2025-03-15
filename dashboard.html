@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleMed - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body onload="loadUserDashboard()">
+    <div class="container">
+        <h2>Welcome to TeleMed</h2>
+        <button onclick="logout()">Logout</button>
+
+        <!-- Patient Booking Section -->
+        <div id="appointmentBookingSection">
+            <h3>Book an Appointment</h3>
+            <button onclick="bookAppointment()">Book Now</button>
+
+            <h3>Your Appointments</h3>
+            <table id="appointmentsTable">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Appointments will be dynamically loaded here -->
+                </tbody>
+            </table>
+
+            <h3>Find Nearby Health Centers</h3>
+            <button onclick="locateHealthCenters()">Find Centers</button>
+            <div id="map"></div>
+        </div>
+
+        <!-- Doctor Management Section -->
+        <div id="doctorManagementSection">
+            <h3>Doctor Management</h3>
+            <form id="doctorAvailabilityForm">
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization" required>
+
+                <label for="availableDays">Available Days (comma-separated):</label>
+                <input type="text" id="availableDays" placeholder="e.g., Monday, Wednesday, Friday" required>
+
+                <label for="availableTimes">Available Time Slots (e.g., 9:00-11:00, 14:00-16:00):</label>
+                <input type="text" id="availableTimes" required>
+
+                <button type="submit">Update Availability</button>
+            </form>
+
+            <h3>Your Availability</h3>
+            <table id="doctorAvailabilityTable">
+                <thead>
+                    <tr>
+                        <th>Specialization</th>
+                        <th>Days</th>
+                        <th>Time Slots</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Availability will be displayed here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
